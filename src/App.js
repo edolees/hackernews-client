@@ -172,10 +172,11 @@ class App extends Component {
           } 
         <div className="interactions">
           <ButtonWithLoading
-            isLoading = {isLoading}
-            onClick={()=> this.fetchSearchTopStories(searchKey, page + 1)}>
+            isLoading={isLoading}
+            onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}
+            >
             More
-            </ButtonWithLoading>
+          </ButtonWithLoading>
         </div>
      </div>
     );
@@ -355,13 +356,15 @@ const Button =({onClick,className,children}) =>
 const Loading = () =>
   <div 
   style= {{fontSize:'80px'}}>
-    < FontAwesomeIcon icon ="spinner" spin / >
+    < FontAwesomeIcon icon ="spinner" spin / 
+    >
+      
   </div>
 
-const withLoading = (Component) => (isLoading , ...rest) =>
-  isLoading ?
-    <Loading /> :
-    <Component {...rest} />
+const withLoading = (Component) => ({ isLoading, ...rest }) =>
+  isLoading
+  ? <Loading />
+  : <Component { ...rest } />
 
 const ButtonWithLoading = withLoading(Button);
 const Sort = ({
