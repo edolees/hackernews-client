@@ -148,8 +148,7 @@ class App extends Component {
       results[searchKey] &&
       results[searchKey].hits
     ) || [];
-    if (error){return <p>Something went wrong..</p>}
-    
+    if (error){return <p>Something went wrong..</p>} 
     return (
       <div className="page">
         <div className="interactions">
@@ -161,8 +160,8 @@ class App extends Component {
         Search
         </Search>
         </div>
-        {error
-          ? <div>
+        {error?
+          <div>
             <p>Something went wrong..</p>
           </div>
           :<Table
@@ -179,7 +178,7 @@ class App extends Component {
           </ButtonWithLoading>
         </div>
      </div>
-    );
+    )
   }
 }
 class Search extends Component{
@@ -367,6 +366,7 @@ const withLoading = (Component) => ({ isLoading, ...rest }) =>
   : <Component { ...rest } />
 
 const ButtonWithLoading = withLoading(Button);
+
 const Sort = ({
   sortKey,
   activeSortKey,
