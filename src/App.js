@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faSync,faCaretDown,faSpinner, faArrowAltCircleDown, faArrowAltCircleUp, faDotCircle } from '@fortawesome/free-solid-svg-icons'
+import { faSync,faCaretUp,faCaretDown,faSpinner, faArrowAltCircleDown, faArrowAltCircleUp, faDotCircle } from '@fortawesome/free-solid-svg-icons'
 import  axios from 'axios';
 import PropTypes from 'prop-types'
 import {sortBy} from 'lodash'
 import classNames from 'classnames'
 import './App.css';
+import 'bulma/css/bulma.css'
 
-library.add(fab,faCaretDown,faSpinner, faArrowAltCircleUp,faArrowAltCircleDown,faDotCircle,faSync,)
+
+library.add(fab,faCaretUp,faCaretDown,faSpinner, faArrowAltCircleUp,faArrowAltCircleDown,faDotCircle,faSync,)
 
 const DEFAULT_QUERY = 'redux';
 const DEFAULT_HPP= '100';
@@ -173,6 +175,7 @@ class App extends Component {
           <ButtonWithLoading
             isLoading={isLoading}
             onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}
+            className= "button is-info"
             >
             More
           </ButtonWithLoading>
@@ -195,14 +198,23 @@ class Search extends Component{
       onSubmit, 
     } = this.props;
     return (
-      <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit}>
+    <div className="field has-addons has-addons-centered">
+      <div className="control">
         <input
           type="text"
           value={value}
           onChange={onChange}
           ref={el => this.input = el}
         />
-        <button type="submit">{children}</button>
+      </div>
+      <div className="control">
+        <button 
+        type="submit"
+          className="button is-info"
+        >{children}</button>
+      </div>
+      </div>
       </form>
     );
   }
@@ -274,7 +286,8 @@ class Table extends Component {
         </Sort>
       </span>
     
-      <span style ={{width: '10%'}}>
+      <span 
+      style ={{width: '10%'}}>
         <Sort 
           sortKey=  {'COMMENTS'}
           onSort= {this.onSort}
@@ -311,9 +324,8 @@ class Table extends Component {
         <span style = {smallColumn}>
           <Button onClick={()=> 
           onDismiss(item.objectID)}
-          className="button-inline"
+          className="delete is-medium"
           >
-            Archive
           </Button>
         </span>          
       </div>
@@ -350,7 +362,7 @@ const Button =({onClick,className,children}) =>
   Button.propTypes = {
     onClick: PropTypes.func.isRequired,
     className: PropTypes.string,
-    children : PropTypes.node.isRequired,
+    children : PropTypes.node,
   };
 const Loading = () =>
   <div 
@@ -385,7 +397,7 @@ const Sort = ({
     >{sortKey === activeSortKey
       ? <FontAwesomeIcon
         icon = {
-          isSortReverse ? faArrowAltCircleUp : faArrowAltCircleDown
+          isSortReverse ? faCaretUp : faCaretDown
         }
         style={{ verticalAlign: 'middle' }}
       />

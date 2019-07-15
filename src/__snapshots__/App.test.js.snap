@@ -16,6 +16,7 @@ exports[`App has a valid snapshot 1`] = `
         value="redux"
       />
       <button
+        className="button-inline"
         type="submit"
       >
         Search
@@ -154,6 +155,7 @@ exports[`Search has a valid snapshot 1`] = `
     type="text"
   />
   <button
+    className="button-inline"
     type="submit"
   >
     Search
@@ -293,12 +295,10 @@ exports[`Table has a valid snapshot 1`] = `
       }
     >
       <button
-        className="button-inline"
+        className="delete is-medium"
         onClick={[Function]}
         type="button"
-      >
-        Archive
-      </button>
+      />
     </span>
   </div>
   <div
@@ -350,12 +350,10 @@ exports[`Table has a valid snapshot 1`] = `
       }
     >
       <button
-        className="button-inline"
+        className="delete is-medium"
         onClick={[Function]}
         type="button"
-      >
-        Archive
-      </button>
+      />
     </span>
   </div>
   ;
