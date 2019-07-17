@@ -329,7 +329,7 @@ class Table extends Component {
           </Button>
         </span>          
       </div>
-    )};
+    )}
   </div>
     ); 
   }
